@@ -10,3 +10,4 @@ hello mọi người
 - đang test kết nối camera từ model mediapipe sang font-end
 - đã connect với nhau nhưng chưa thể hiện camera
 - font-end sử dụng vue để kết nối websocket với backend
+- up lên fould modle hand tracking mới
