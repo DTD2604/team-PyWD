@@ -11,23 +11,23 @@ mp_drawing = mp.solutions.drawing_utils
 camera = cv2.VideoCapture(0)
 
 
-# @video_feed_router.websocket("/video_feed")
-# async def websocket_endpoint(websocket: WebSocket):
-#     await websocket.accept()
-#     with mp_face_detection.FaceDetection(model_selection=1, min_detection_confidence=0.5) as face_detection:
-#         while True:
-#             success, frame = camera.read()
-#             if not success:
-#                 break
-#             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-#             results = face_detection.process(frame)
-#             frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-#             if results.detections:
-#                 for detection in results.detections:
-#                     mp_drawing.draw_detection(frame, detection)
-#             ret, buffer = cv2.imencode('.jpg', frame)
-#             frame = buffer.tobytes()
-#             await websocket.send_bytes(frame)
+@video_feed_router.websocket("/video_feed")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    with mp_face_detection.FaceDetection(model_selection=1, min_detection_confidence=0.5) as face_detection:
+        while True:
+            success, frame = camera.read()
+            if not success:
+                break
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            results = face_detection.process(frame)
+            frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+            if results.detections:
+                for detection in results.detections:
+                    mp_drawing.draw_detection(frame, detection)
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+            await websocket.send_bytes(frame)
 
 html = """
 <!doctype html>
@@ -42,7 +42,7 @@ html = """
 <body>
     <div>
     <h1>Camera Feed</h1>
-    <img id="videoElement" title="camera"/>
+    <img id="videoElement" title="camera" style="width:100%;"/>
   </div>
   <script>
   export default {
