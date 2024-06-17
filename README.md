@@ -11,3 +11,6 @@ hello mọi người
 - đã connect với nhau nhưng chưa thể hiện camera
 - font-end sử dụng vue để kết nối websocket với backend
 - up lên fould modle hand tracking mới
+## 17/6/2024
+- up lên code font end
+- 
