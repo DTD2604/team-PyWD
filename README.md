@@ -13,4 +13,6 @@ hello mọi người
 - up lên fould modle hand tracking mới
 ## 17/6/2024
 - up lên code font end
-- 
+## 21/6/2024
+- kết nối thành công với api bot "Auto Text Suggester" của coze
+- đang cố kết nối camera của model với camera font-end
