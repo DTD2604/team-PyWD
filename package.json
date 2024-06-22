@@ -1,0 +1,17 @@
+{
+  "name": "pywd",
+  "version": "1.0.0",
+  "description": "hello mọi người\r # note\r ##  9/6/2024\r - up lên model của mediapipe solution holistic \r - chưa cài model lưu tọa độ và gen chữ\r ## 16/6/2024\r - up lên code back end\r - đang test kết nối camera từ model mediapipe sang font-end\r - đã connect với nhau nhưng chưa thể hiện camera\r - font-end sử dụng vue để kết nối websocket với backend\r - up lên fould modle hand tracking mới\r ## 17/6/2024\r - up lên code font end\r -",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

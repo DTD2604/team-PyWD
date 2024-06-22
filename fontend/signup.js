@@ -22,4 +22,9 @@ btnRegister.addEventListener("click", function (e) {
         localStorage.setItem(EmailRegister.value, json);
         window.location.href = "index.html";
     }
+<<<<<<< HEAD
 })
+
+=======
+})
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209
