@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Profile Container */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 600px; /* Increased width */
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Profile Content */
+  .profile-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Profile Picture */
+  .profile-picture {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-picture:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Profile Details */
+  .profile-details {
+    flex: 1;
+    line-height: 2;
+  }
+  
+  /* Detail */
+  .detail {
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .value {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Edit Button */
+  .edit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Body Styles for Centering */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 40px;
+    border: 1px solid #ddd;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-content h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Form Styles */
+  #edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .input-box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"] {
+    width: 96%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="email"]:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Change Avatar Button and Input */
+  #change-avatar-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #change-avatar-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  #avatar-input {
+    /* Hide the input by default */
+    display: none;
+  }
+  
+  /* Save Button */
+  .save-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .close-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f; /* Màu nút khi rê chuột qua */
+}
+
+</style>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>CUSTOMER PROFILE</h1>
+        </div>
+        <div class="profile-content">
+            <div class="profile-picture">
+                <img src="white.pgn" alt="Avatar" id="profile-picture">
+            </div>
+            <div class="profile-details">
+                <div class="detail">
+                    <span class="label">Full Name:</span>
+                    <span class="value" id="full-name">John Doe</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Phone:</span>
+                    <span class="value" id="phone">123-456-7890</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Email:</span>
+                    <span class="value" id="email">john@example.com</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Address:</span>
+                    <span class="value" id="address">123 Main Street, City, Country</span>
+                </div>
+                <button class="edit-btn" id="edit-profile-btn">Edit Profile</button>
+                <button class="close-btn" id="close-profile-btn">Close</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="edit-form">
+                <div class="input-box">
+                    <input type="text" id="edit-full-name" placeholder="Full Name" required>
+                </div>
+                <div class="input-box">
+                    <input type="tel" id="edit-phone" placeholder="Phone" required>
+                </div>
+                <div class="input-box">
+                    <input type="email" id="edit-email" placeholder="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="edit-address" placeholder="Address" required>
+                </div>
+                <div>
+                    <button class="edit-btn" id="change-avatar-btn">Change Avatar</button>
+                  <input type="file" id="avatar-input" accept="image/*" style="display: none;">
+                </div>
+                <button type="submit" class="save-btn">Save Changes</button>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        const editModal = document.getElementById('edit-modal');
+        const closeModalBtn = editModal.querySelector('.close');
+        const editForm = document.getElementById('edit-form');
+        const fullNameInput = document.getElementById('edit-full-name');
+        const phoneInput = document.getElementById('edit-phone');
+        const emailInput = document.getElementById('edit-email');
+        const addressInput = document.getElementById('edit-address');
+        const fullNameValue = document.getElementById('full-name');
+        const phoneValue = document.getElementById('phone');
+        const emailValue = document.getElementById('email');
+        const addressValue = document.getElementById('address');
+        const profilePicture = document.getElementById('profile-picture');
+        const avatarInput = document.getElementById('avatar-input');
+    
+        // Function to save profile data to Local Storage
+        function saveProfileToLocalStorage() {
+            localStorage.setItem('full-name', fullNameValue.textContent);
+            localStorage.setItem('phone', phoneValue.textContent);
+            localStorage.setItem('email', emailValue.textContent);
+            localStorage.setItem('address', addressValue.textContent);
+        }
+    
+        // Function to load profile data from Local Storage
+        function loadProfileFromLocalStorage() {
+            fullNameValue.textContent = localStorage.getItem('full-name');
+            phoneValue.textContent = localStorage.getItem('phone');
+            emailValue.textContent = localStorage.getItem('email');
+            addressValue.textContent = localStorage.getItem('address');
+        }
+    
+        // Function to save profile picture to Local Storage
+        function saveProfilePictureToLocalStorage(imgSrc) {
+            localStorage.setItem('profile-picture', imgSrc);
+        }
+    
+        // Function to load profile picture from Local Storage
+        function loadProfilePictureFromLocalStorage() {
+            const imgSrc = localStorage.getItem('profile-picture');
+            if (imgSrc) {
+                profilePicture.src = imgSrc;
+            }
+        }
+    
+        // Show edit modal when clicking on Edit Profile button
+        editProfileBtn.addEventListener('click', function() {
+            editModal.style.display = 'block';
+            // Populate inputs with current values
+            fullNameInput.value = fullNameValue.textContent;
+            phoneInput.value = phoneValue.textContent;
+            emailInput.value = emailValue.textContent;
+            addressInput.value = addressValue.textContent;
+        });
+    
+        // Close modal when clicking on close button
+        closeModalBtn.addEventListener('click', function() {
+            editModal.style.display = 'none';
+        });
+    
+        // Close modal when clicking outside of the modal
+        window.addEventListener('click', function(event) {
+            if (event.target === editModal) {
+                editModal.style.display = 'none';
+            }
+        });
+    
+        // Save changes when submitting the form
+        editForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Update profile details with new values
+            fullNameValue.textContent = fullNameInput.value;
+            phoneValue.textContent = phoneInput.value;
+            emailValue.textContent = emailInput.value;
+            addressValue.textContent = addressInput.value;
+            // Save changes to Local Storage
+            saveProfileToLocalStorage();
+            // Close the modal
+            editModal.style.display = 'none';
+        });
+    
+        // Load profile data from Local Storage on page load
+        loadProfileFromLocalStorage();
+    
+        // Load profile picture from Local Storage on page load
+        loadProfilePictureFromLocalStorage();
+    
+        // Change profile picture when selecting a new image
+        avatarInput.addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                var imgSrc = e.target.result;
+                profilePicture.src = imgSrc;
+                // Save new profile picture to Local Storage
+                saveProfilePictureToLocalStorage(imgSrc);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+    
+    document.getElementById('change-avatar-btn').addEventListener('click', function() {
+        document.getElementById('avatar-input').click();
+    });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const closeProfileBtn = document.getElementById('close-profile-btn');
+    
+        // Xử lý sự kiện khi người dùng nhấn nút "Close"
+        closeProfileBtn.addEventListener('click', function() {
+            window.location.href = 'index.html'; // Chuyển về trang Main.html
+        });
+    });
+    
+</script>
