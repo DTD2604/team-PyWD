@@ -41,7 +41,10 @@ body {
 .Chat{
     background-color: rgb(235, 233, 233);
     border-radius: 10px;
+<<<<<<< HEAD
      
+=======
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209
     
 }
 /* =================================================================================================================================================================== */
@@ -212,6 +215,10 @@ body {
 .SendMessage {
     position: relative;
     display: flex;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209
 }
 
 .Send-Button{
@@ -258,7 +265,11 @@ body {
     position: relative;
     width: 100%;
     height: 20%;
+<<<<<<< HEAD
     padding: 1.3rem 1rem 1.3rem 1rem;
+=======
+    padding: 1.3rem 1rem 1.2rem 1rem;
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209
     background: none;
     border: solid 1px #9e9e9e;
     border-radius: .6rem;
@@ -282,6 +293,7 @@ body {
   .input:focus~.label, input:valid ~ label {
     top: -4px;
     outline: none;
+<<<<<<< HEAD
 }
   
 
@@ -336,3 +348,12 @@ body {
     outline: none;
     color: red  ;
 }
+=======
+    left: -5px;
+    font-size: .8rem;
+    color: #b9b9b9;
+  }
+
+
+  
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209

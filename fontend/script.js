@@ -100,7 +100,10 @@ socket.on('answer', answer => {
 socket.on('candidate', candidate => {
     peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209
 // =======================================================================================================================================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -117,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 // =======================================================================================================================================================
+<<<<<<< HEAD
 // Kiểm tra trình duyệt có hỗ trợ SpeechRecognition
 if (!('webkitSpeechRecognition' in window)) {
     alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Hãy sử dụng Chrome.');
@@ -274,3 +278,5 @@ document.getElementById('imageInput').addEventListener('change', function(event)
 
 // ================================================================================================================================
 
+=======
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209

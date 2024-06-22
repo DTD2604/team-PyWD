@@ -41,6 +41,7 @@ io.on('connection', socket => {
 server.listen(3000, () => {
     console.log('Server is running on port 3000');
 });
+<<<<<<< HEAD
 
 
 // const express = require('express');
@@ -79,3 +80,5 @@ server.listen(3000, () => {
 
 
 
+=======
+>>>>>>> 6e78306dbe3e420a7fd16ef56c928893e0f49209
