@@ -20,7 +20,7 @@ async function sendMessage(conversation_id, user, list_query) {
     conversation_id: conversation_id,
     bot_id: bot_id,
     user: user,
-    query: `Dựa vào ngữ cảnh cả đoạn hội thoại, hãy tạo ra tối thiểu 4 câu văn gợi ý hoàn chỉnh và có ý nghĩa được tạo thành từ các từ sau (mỗi câu văn gợi ý ngăn cách bằng dấu ".", hạn chế có cảm xúc tiêu cực trong câu): ${query}`,
+    query: `Based on the context of the entire conversation, create at least four complete and meaningful suggestions consisting of the following words (each of the suggestions is separated by a mark ".", limiting the negative emotions in the sentence): ${query}`,
     stream: false,
     chat_history: chatHistory.getHistory()
   };
